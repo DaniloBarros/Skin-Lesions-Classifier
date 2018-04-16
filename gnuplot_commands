@@ -1,6 +1,6 @@
 set datafile separator ','
 set term x11 0
-plot './experiment_2_train.log.train' using 1:4  with line,\
-     './experiment_2_train.log.test' using 1:5 with line
+plot '/home/danilo/Documents/FGA/2018-1/TCC1/Scripts/Architectures/resnet152/train/final_aug_models/train_treinamentoLixoComOutputErrado.log.train' using 1:4  with line,\
+     '/home/danilo/Documents/FGA/2018-1/TCC1/Scripts/Architectures/resnet152/train/final_aug_models/train_treinamentoLixoComOutputErrado.log.test' using 1:5 with line
 set term x11 1
-plot './experiment_2_train.log.test' using 1:4 with line
+plot '/home/danilo/Documents/FGA/2018-1/TCC1/Scripts/Architectures/resnet152/train/final_aug_models/train_treinamentoLixoComOutputErrado.log.test' using 1:4 with line

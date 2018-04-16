@@ -1,0 +1,5 @@
+set datafile separator ','
+plot '/home/danilo/Documents/FGA/2018-1/TCC1/Scripts/Architectures/resnet152/train/atlas_5k/train.log.train' using 1:4  with line title 'training loss',\
+     '/home/danilo/Documents/FGA/2018-1/TCC1/Scripts/Architectures/resnet152/train/atlas_5k/train.log.test' using 1:5 with line title 'test loss'
+pause 1
+reread

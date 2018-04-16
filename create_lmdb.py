@@ -68,25 +68,21 @@ for r, dirs, files in os.walk(path):
     directory_name = r.split(os.path.sep)[-1]
     dataset.append((files_full_path, directory_name))
 
+label_dict = {
+    'basalcellcarcinoma': 0,
+    'lentigo': 1,
+    'malignantmelanoma': 2,
+    'pigmentednevus': 3,
+    'seborrheickeratosis': 4,
+    'wart': 5
+}
+
 X = [(img, label) for ndataset, label in dataset for img in ndataset]
+y = [label_dict[label] for _, label in X]
 # Shuffle dataset
 random.shuffle(X)
 
-train_data, test_data, _, _ = train_test_split(X, np.zeros(len(X)), train_size=0.8)
-label_dict = {
-    'ak': 10,
-    'basalcellcarcinoma': 5,
-    'dermatofibroma': 11,
-    'hemangioma': 3,
-    'intraepithelial_carcinoma': 0,
-    'lentigo': 7,
-    'melanoma': 4,
-    'naevus': 8,
-    'pyogenic_granuloma': 2,
-    'scc': 9,
-    'seborrheickeratosis': 1,
-    'wart': 6
-}
+train_data, test_data, _, _ = train_test_split(X, y, train_size=0.8, stratify=y)
 
 print('Creating train_lmdb...')
 
@@ -107,7 +103,7 @@ with in_db.begin(write=True) as in_txn:
         in_txn.put(key.encode(), datum.SerializeToString())
         # print '{:0>6d}'.format(in_idx) + ':' + img_path
 in_db.close()
-print('Finished train_lmdb in {:.2f} sec'.format(time() - train_time))
+print('Finished {} train_lmdb in {:.2f} sec'.format(len(train_data), (time() - train_time)))
 
 
 print('\nCreating validation_lmdb...')
@@ -133,6 +129,6 @@ with in_db.begin(write=True) as in_txn:
         # in_txn.put('{:0>6d}'.format(in_idx), datum.SerializeToString())
         # print '{:0>5d}'.format(in_idx) + ':' + img_path
 in_db.close()
-print('Finished test_lmdb in {:.2f} sec'.format(time() - test_time))
+print('Finished {} test_lmdb in {:.2f} sec'.format(len(test_data), (time() - test_time)))
 
 print('\nFinished processing all images in {:.2f}'.format(time() - train_time))
