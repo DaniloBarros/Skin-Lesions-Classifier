@@ -82,19 +82,28 @@ for r, dirs, files in os.walk(path):
 
 test_dataset = [(img, label) for ndataset, label in dataset for img in ndataset]
 label_dict = {
-    'ak': 10,
-    'basalcellcarcinoma': 5,
-    'dermatofibroma': 11,
-    'hemangioma': 3,
-    'intraepithelial_carcinoma': 0,
-    'lentigo': 7,
-    'melanoma': 4,
-    'naevus': 8,
-    'pyogenic_granuloma': 2,
-    'scc': 9,
-    'seborrheickeratosis': 1,
-    'wart': 6
+    'basalcellcarcinoma': 0,
+    'lentigo': 1,
+    'malignantmelanoma': 2,
+    'pigmentednevus': 3,
+    'seborrheickeratosis': 4,
+    'wart': 5
 }
+
+#label_dict = {
+#    'ak': 10,
+#    'basalcellcarcinoma': 5,
+#    'dermatofibroma': 11,
+#    'hemangioma': 3,
+#    'intraepithelial_carcinoma': 0,
+#    'lentigo': 7,
+#    'melanoma': 4,
+#    'naevus': 8,
+#    'pyogenic_granuloma': 2,
+#    'scc': 9,
+#    'seborrheickeratosis': 1,
+#    'wart': 6
+#}
 
 test_ids = []
 
