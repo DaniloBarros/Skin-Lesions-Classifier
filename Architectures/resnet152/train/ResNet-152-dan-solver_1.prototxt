@@ -4,13 +4,13 @@ test_iter: 6000
 test_interval: 2000
 test_initialization: false
 display: 50
-base_lr: 0.001
+base_lr: 0.01
 lr_policy: "step"
-stepsize: 60000
+stepsize: 15000
 gamma: 0.1
 momentum: 0.9
 weight_decay: 0.00001
 max_iter: 60000
 snapshot: 6000
-snapshot_prefix: "/home/danilo/Documents/FGA/2018-1/TCC1/Scripts/Architectures/resnet152/train/atlas_5k_2/atlas_5k_2"
+snapshot_prefix: "/home/danilo/Documents/FGA/2018-1/TCC1/Scripts/Architectures/resnet152/train/atlas_5k_3/atlas_5k_3"
 solver_mode: GPU
