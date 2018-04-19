@@ -15,6 +15,7 @@ ap.add_argument('-m', '--mean', required=True, help='Path to mean image')
 ap.add_argument('-d', '--deploy', required=True, help='Path to model prototxt')
 ap.add_argument('-c', '--model', required=True, help='Path to caffemodel')
 ap.add_argument('-t', '--test', required=True, help='Path to test dataset folder')
+ap.add_argument('-f', '--filename', required=False, help='.CSV Filename', default='prediction')
 args = vars(ap.parse_args())
 
 #Size of images
@@ -134,7 +135,9 @@ for in_idx, (img_path, label) in enumerate(test_dataset):
 '''
 Making submission file
 '''
-with open(args['test']+"/prediction.csv","w") as f:
+csv_path = os.path.split(args['model'])[0]
+csv_file = csv_path + '/{}.csv'.format(args['filename'])
+with open(csv_file,"w") as f:
     f.write("id,label,true,prob\n")
     for t in test_ids:
         f.write(','.join([str(i) for i in t])+"\n")
