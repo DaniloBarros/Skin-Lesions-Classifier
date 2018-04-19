@@ -1,3 +1,4 @@
 *.pyc
 *.solverstate
 *.caffemodel
+.ipynb_checkpoints
