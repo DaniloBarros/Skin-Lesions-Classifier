@@ -10,10 +10,10 @@ layer {
    transform_param {
 		mirror: true
 		crop_size: 224
-		mean_file: "/home/danilo/Documents/FGA/2018-1/TCC1/data/edited/Med_atlas_edin/train_lmdb/input/mean.binaryproto"
+		mean_file: "/home/danilo/Documents/FGA/2018-1/TCC1/data/edited/Med_atlas_edin_29x_lmdb/input/mean.binaryproto"
 	}
     data_param {
-        source: "/home/danilo/Documents/FGA/2018-1/TCC1/data/edited/Med_atlas_edin/train_lmdb/train"
+        source: "/home/danilo/Documents/FGA/2018-1/TCC1/data/edited/Med_atlas_edin_29x_lmdb/train"
 		batch_size: 5
         backend: LMDB
     }
@@ -29,10 +29,10 @@ layer {
     transform_param {
 		mirror: true
 		crop_size: 224
-		mean_file: "/home/danilo/Documents/FGA/2018-1/TCC1/data/edited/Med_atlas_edin/train_lmdb/input/mean.binaryproto"
+		mean_file: "/home/danilo/Documents/FGA/2018-1/TCC1/data/edited/Med_atlas_edin_29x_lmdb/input/mean.binaryproto"
 	}
     data_param {
-        source: "/home/danilo/Documents/FGA/2018-1/TCC1/data/edited/Med_atlas_edin/train_lmdb/validation"
+        source: "/home/danilo/Documents/FGA/2018-1/TCC1/data/edited/Med_atlas_edin_29x_lmdb/validation"
         batch_size: 1
         backend: LMDB
     }

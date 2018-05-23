@@ -6762,7 +6762,7 @@ layer {
 	name: "fc1000-skin"
 	type: "InnerProduct"
 	inner_product_param {
-		num_output: 6
+		num_output: 12
 	}
 }
 

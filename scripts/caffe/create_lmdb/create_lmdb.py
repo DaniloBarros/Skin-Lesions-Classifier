@@ -9,6 +9,7 @@ import numpy as np
 from time import time
 from sklearn.model_selection import train_test_split
 import cv2
+import pickle
 
 import caffe
 from caffe.proto import caffe_pb2
@@ -68,14 +69,21 @@ for r, dirs, files in os.walk(path):
     directory_name = r.split(os.path.sep)[-1]
     dataset.append((files_full_path, directory_name))
 
-label_dict = {
-    'basalcellcarcinoma': 0,
-    'lentigo': 1,
-    'malignantmelanoma': 2,
-    'pigmentednevus': 3,
-    'seborrheickeratosis': 4,
-    'wart': 5
-}
+label_dict = [(l, i) for i, l in enumerate(labels)]
+label_dict = dict(label_dict)
+
+with open('label_dict.pkl', 'wb') as f:
+    pickle.dump(label_dict, f)
+    f.close()
+
+#label_dict = {
+#    'basalcellcarcinoma': 0,
+#    'lentigo': 1,
+#    'malignantmelanoma': 2,
+#    'pigmentednevus': 3,
+#    'seborrheickeratosis': 4,
+#    'wart': 5
+#}
 
 X = [(img, label) for ndataset, label in dataset for img in ndataset]
 y = [label_dict[label] for _, label in X]

@@ -16,6 +16,7 @@ ap.add_argument('-d', '--deploy', required=True, help='Path to model prototxt')
 ap.add_argument('-c', '--model', required=True, help='Path to caffemodel')
 ap.add_argument('-t', '--test', required=True, help='Path to test dataset folder')
 ap.add_argument('-f', '--filename', required=False, help='.CSV Filename', default='prediction')
+ap.add_argument('-p', '--pickle', required=False, help='Pickle Filename label dict')
 args = vars(ap.parse_args())
 
 #Size of images
@@ -90,6 +91,11 @@ label_dict = {
     'seborrheickeratosis': 4,
     'wart': 5
 }
+
+if args['pickle'] != '':
+    import pickle
+    with open(args['pickle'], 'rb') as f:
+         label_dict = pickle.load(f)
 
 #label_dict = {
 #    'ak': 10,
